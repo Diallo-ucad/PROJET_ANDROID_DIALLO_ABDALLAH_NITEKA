@@ -1,2 +1,4 @@
 # PROJET_ANDROID_DIALLO_ABDALLAH_NITEKA
 Repositorie contenant le projet Calculatrice et Newsletter
+
+API KEY e547106de0e74054bf6ab4f63a9a2e59

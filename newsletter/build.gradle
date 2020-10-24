@@ -52,6 +52,14 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //dependances retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.6.0"
+    //dependances okhttp
+    implementation "com.squareup.okhttp3:okhttp:3.12.0"
+    //dependances gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+    //dependances converter gson
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     testImplementation 'junit:junit:4.13.1'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'

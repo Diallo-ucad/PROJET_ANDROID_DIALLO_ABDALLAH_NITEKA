@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
 import com.mbds.newsletter.model.Category
+import com.mbds.newsletter.utils.CellClickListener
 
-class CategoriAdapter(private val dataset: List<Category>) :
+class CategoriAdapter(private val dataset: List<Category>, private val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<CategoriAdapter.ViewHolder>() {
 
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
@@ -40,7 +41,13 @@ class CategoriAdapter(private val dataset: List<Category>) :
         holder.bind(
             dataset[position]
         )
+        holder.itemView.setOnClickListener{
+            cellClickListener.onCellClickListener()
+            val txtName = it.findViewById<TextView>(R.id.category_name)
+            println(txtName.text)
+        }
     }
 
     override fun getItemCount(): Int = dataset.size
 }
+

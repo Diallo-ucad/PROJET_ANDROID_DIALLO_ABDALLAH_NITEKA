@@ -4,13 +4,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.mbds.newsletter.fragments.CategoriesFragment
+import com.mbds.newsletter.fragments.ArticlesFragment
+import com.mbds.newsletter.utils.CellClickListener
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CellClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        changeFragment(CategoriesFragment())
+        changeFragment(CategoriesFragment(this))
+    }
+    override fun onCellClickListener() {
+        println("Cellule clickée")
+        changeFragment(ArticlesFragment())
     }
 }
 
