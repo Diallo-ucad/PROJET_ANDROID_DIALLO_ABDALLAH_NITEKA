@@ -15,7 +15,7 @@ import com.mbds.newsletter.utils.ArticleItem
  * TODO: Replace the implementation with code for your data type.
  */
 class ArticleRecyclerViewAdapter(
-        private val values: MutableList<DummyItem>
+        private val values: List<ArticleItem>
 )
     : RecyclerView.Adapter<ArticleRecyclerViewAdapter.ViewHolder>() {
 
@@ -27,7 +27,7 @@ class ArticleRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
+        holder.idView.text = item.author
         holder.contentView.text = item.content
     }
 

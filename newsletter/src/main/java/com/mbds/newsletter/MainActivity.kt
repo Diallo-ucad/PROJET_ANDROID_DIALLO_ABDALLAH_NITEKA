@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity(), CellClickListener {
 
         changeFragment(CategoriesFragment(this))
     }
-    override fun onCellClickListener() {
-        println("Cellule clickée")
-        changeFragment(ArticlesFragment())
+    override fun onCellClickListener(category : String) {
+        println("Catégory cliquée : $category")
+        changeFragment(ArticlesFragment(category))
     }
 }
 

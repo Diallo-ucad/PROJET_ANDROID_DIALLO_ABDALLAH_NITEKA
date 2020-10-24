@@ -1,7 +1,13 @@
 package com.mbds.newsletter.fragments.dummy
 
-import java.util.ArrayList
-import java.util.HashMap
+import com.mbds.newsletter.utils.ArticleItem
+import com.mbds.newsletter.utils.ArticleService
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
+
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -10,7 +16,42 @@ import java.util.HashMap
  * TODO: Replace all uses of this class before publishing your app.
  */
 object DummyContent {
+    private val service: ArticleService
+    init {
+        println(" ********************************************************* INIT ")
+        val logging = HttpLoggingInterceptor()
+// set your desired log level
+// set your desired log level
+        logging.level = HttpLoggingInterceptor.Level.BODY
 
+        val httpClient = OkHttpClient.Builder()
+// add your other interceptors …
+
+// add logging as last interceptor
+// add your other interceptors …
+
+// add logging as last interceptor
+        httpClient.addInterceptor(logging) // <-- this is the important line!
+
+
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("http://newsapi.org/v2/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(httpClient.build())
+            .build()
+
+        println(" ********************************************************* INIT 2 ${retrofit.toString()}")
+        service = retrofit.create(ArticleService::class.java)
+        println(" ********************************************************* INIT FIN ")
+    }
+    fun list(): List<ArticleItem> {
+        println(" ********************************************************* Commencement ")
+        val response = service.list().execute()
+        println(" ********************************************************* ")
+        println("response : ${response.code()} ${response.message()}")
+        println("body : ${response.body()?.status}")
+        return  emptyList()
+    }
     /**
      * An array of sample (dummy) items.
      */

@@ -42,9 +42,9 @@ class CategoriAdapter(private val dataset: List<Category>, private val cellClick
             dataset[position]
         )
         holder.itemView.setOnClickListener{
-            cellClickListener.onCellClickListener()
+
             val txtName = it.findViewById<TextView>(R.id.category_name)
-            println(txtName.text)
+            cellClickListener.onCellClickListener(txtName.text.toString())
         }
     }
 
