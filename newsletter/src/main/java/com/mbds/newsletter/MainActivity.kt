@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.mbds.newsletter.fragments.CategoriesFragment
 import com.mbds.newsletter.fragments.ArticlesFragment
+import com.mbds.newsletter.model.Category
 import com.mbds.newsletter.utils.CellClickListener
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), CellClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +15,7 @@ class MainActivity : AppCompatActivity(), CellClickListener {
 
         changeFragment(CategoriesFragment(this))
     }
-    override fun onCellClickListener(category : String) {
+    override fun onCellClickListener(category: Category) {
         println("Catégory cliquée : $category")
         changeFragment(ArticlesFragment(category))
     }

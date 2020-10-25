@@ -11,14 +11,16 @@ import com.mbds.newsletter.R
 import com.mbds.newsletter.model.Category
 import com.mbds.newsletter.utils.CellClickListener
 
-class CategoriAdapter(private val dataset: List<Category>, private val cellClickListener: CellClickListener) :
-    RecyclerView.Adapter<CategoriAdapter.ViewHolder>() {
+class CategoryRecyclerViewAdapter(private val dataset: List<Category>, private val cellClickListener: CellClickListener) :
+    RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
+        lateinit var category: Category
         fun bind(item: Category) {
             val txtName = root.findViewById<TextView>(R.id.category_name)
             val imageView = root.findViewById<ImageView>(R.id.category_image)
-            txtName.text = item.name
+            txtName.text = item.label
+            category = item
 
             Glide
                 .with(root)
@@ -42,9 +44,7 @@ class CategoriAdapter(private val dataset: List<Category>, private val cellClick
             dataset[position]
         )
         holder.itemView.setOnClickListener{
-
-            val txtName = it.findViewById<TextView>(R.id.category_name)
-            cellClickListener.onCellClickListener(txtName.text.toString())
+            cellClickListener.onCellClickListener(holder.category)
         }
     }
 

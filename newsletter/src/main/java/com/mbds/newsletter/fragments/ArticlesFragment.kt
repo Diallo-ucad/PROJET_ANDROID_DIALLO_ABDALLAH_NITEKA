@@ -10,7 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleRecyclerViewAdapter
-import com.mbds.newsletter.fragments.dummy.DummyContent
+import com.mbds.newsletter.model.Category
+import com.mbds.newsletter.repository.Contents
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 /**
  * A fragment representing a list of Items.
  */
-class ArticlesFragment(private val category: String) : Fragment() {
+class ArticlesFragment(private val category: Category) : Fragment() {
 
     private var columnCount = 1
 
@@ -32,6 +33,8 @@ class ArticlesFragment(private val category: String) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        activity?.title = "Catégorie - ${category.label.toLowerCase()}"
+
         val view = inflater.inflate(R.layout.fragment_articles, container, false)
 
         // Set the adapter
@@ -42,10 +45,8 @@ class ArticlesFragment(private val category: String) : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
                 GlobalScope.launch(Dispatchers.Main) {
-                    println("category $category")
-                    adapter = ArticleRecyclerViewAdapter(DummyContent.list(category))
+                    adapter = ArticleRecyclerViewAdapter(Contents.articleList(category))
                     layoutManager = GridLayoutManager(view.context, 1)
-                    println("FIN de la partie")
                 }
 
             }

@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mbds.newsletter.R
-import com.mbds.newsletter.adapters.CategoriAdapter
+import com.mbds.newsletter.adapters.CategoryRecyclerViewAdapter
 import com.mbds.newsletter.model.Category
+import com.mbds.newsletter.repository.Contents
 import com.mbds.newsletter.utils.CellClickListener
 
 /**
@@ -24,29 +25,16 @@ class CategoriesFragment(private val cellClickListener: CellClickListener) : Fra
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity?.title = "Catégories"
         return inflater.inflate(R.layout.fragment_categories, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
-        val articles = listOf(
-                Category(name = "business",
-                        image = "https://i.picsum.photos/id/1075/500/300.jpg?hmac=5DhRFK2dTT-URjGdj3Fgb8fBZOGnqy-lIR1gIm_JJ3U"),
-                Category(name = "entertainment",
-                        image = "https://picsum.photos/500/300?random=1"),
-                Category(name = "general",
-                        image = "https://picsum.photos/500/300?random=2"),
-                Category(name = "health",
-                        image = "https://picsum.photos/500/300?random=3"),
-                Category(name = "science",
-                        image = "https://picsum.photos/500/300?random=4"),
-                Category(name = "sports",
-                        image = "https://picsum.photos/500/300?random=5"),
-                Category(name = "technology",
-                        image = "https://picsum.photos/500/300?random=6")
-        )
-        val adapterRecycler = CategoriAdapter(articles, cellClickListener)
+        val articles = Contents.categoryList()
+
+        val adapterRecycler = CategoryRecyclerViewAdapter(articles, cellClickListener)
         recyclerView.layoutManager = GridLayoutManager(view.context, 1)
         recyclerView.adapter = adapterRecycler
 
