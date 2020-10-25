@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleRecyclerViewAdapter
 import com.mbds.newsletter.fragments.dummy.DummyContent
@@ -19,7 +18,7 @@ import kotlinx.coroutines.launch
 /**
  * A fragment representing a list of Items.
  */
-class ArticlesFragment(category: String) : Fragment() {
+class ArticlesFragment(private val category: String) : Fragment() {
 
     private var columnCount = 1
 
@@ -43,7 +42,8 @@ class ArticlesFragment(category: String) : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
                 GlobalScope.launch(Dispatchers.Main) {
-                    adapter = ArticleRecyclerViewAdapter(DummyContent.list())
+                    println("category $category")
+                    adapter = ArticleRecyclerViewAdapter(DummyContent.list(category))
                     println("FIN de la partie")
                 }
 

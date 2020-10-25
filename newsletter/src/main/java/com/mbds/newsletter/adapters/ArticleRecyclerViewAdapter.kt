@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.mbds.newsletter.R
 
-import com.mbds.newsletter.fragments.dummy.DummyContent.DummyItem
 import com.mbds.newsletter.utils.ArticleItem
 
 /**

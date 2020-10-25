@@ -6,7 +6,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 
 /**
@@ -32,8 +31,8 @@ object DummyContent {
 
         service = retrofit.create(ArticleService::class.java)
     }
-    suspend fun list(): List<ArticleItem> {
-        val response = service.list()
+    suspend fun list(category: String): List<ArticleItem> {
+        val response = service.list(category)
         println("body : ${response.body()?.articles?.map { it.title }}")
         return  response.body()?.articles ?:emptyList()
     }
