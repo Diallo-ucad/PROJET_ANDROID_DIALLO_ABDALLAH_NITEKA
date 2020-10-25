@@ -7,7 +7,11 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ArticleService {
-    @GET("top-headlines?apiKey=e547106de0e74054bf6ab4f63a9a2e59&country=fr")
-    suspend fun list(@Query("category") category: String = "health"): Response<ArticleObject>
+    @GET("top-headlines")
+    suspend fun list(
+        @Query("category") category: String = "health",
+        @Query("apiKey") apiKey: String,
+        @Query("country") country: String = "fr"
+    ): Response<ArticleObject>
 }
 

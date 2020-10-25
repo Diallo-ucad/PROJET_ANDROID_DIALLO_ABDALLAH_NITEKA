@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleRecyclerViewAdapter
-import com.mbds.newsletter.fragments.dummy.DummyContent
+import com.mbds.newsletter.repository.Contents
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -43,7 +43,7 @@ class ArticlesFragment(private val category: String) : Fragment() {
                 }
                 GlobalScope.launch(Dispatchers.Main) {
                     println("category $category")
-                    adapter = ArticleRecyclerViewAdapter(DummyContent.list(category))
+                    adapter = ArticleRecyclerViewAdapter(Contents.articleList(category))
                     layoutManager = GridLayoutManager(view.context, 1)
                     println("FIN de la partie")
                 }
