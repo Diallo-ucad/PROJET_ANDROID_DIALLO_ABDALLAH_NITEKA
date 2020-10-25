@@ -1,3 +1,3 @@
 package com.mbds.newsletter.utils
 
-data class ArticleObject(val status : String)
+data class ArticleObject(val articles : List<ArticleItem>)

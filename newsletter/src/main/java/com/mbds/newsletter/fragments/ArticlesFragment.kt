@@ -8,9 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleRecyclerViewAdapter
 import com.mbds.newsletter.fragments.dummy.DummyContent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * A fragment representing a list of Items.
@@ -38,7 +42,11 @@ class ArticlesFragment(category: String) : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = ArticleRecyclerViewAdapter(DummyContent.list())
+                GlobalScope.launch(Dispatchers.Main) {
+                    adapter = ArticleRecyclerViewAdapter(DummyContent.list())
+                    println("FIN de la partie")
+                }
+
             }
         }
         return view

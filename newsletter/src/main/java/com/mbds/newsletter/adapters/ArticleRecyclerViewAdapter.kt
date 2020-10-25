@@ -27,8 +27,8 @@ class ArticleRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.author
-        holder.contentView.text = item.content
+        holder.idView.text = item.title
+        holder.contentView.text = item.author
     }
 
     override fun getItemCount(): Int = values.size

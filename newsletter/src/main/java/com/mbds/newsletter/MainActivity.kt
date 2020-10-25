@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import com.mbds.newsletter.fragments.CategoriesFragment
 import com.mbds.newsletter.fragments.ArticlesFragment
 import com.mbds.newsletter.utils.CellClickListener
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), CellClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
