@@ -1,8 +1,8 @@
 package com.mbds.newsletter.repository
 
 import com.mbds.newsletter.model.Category
-import com.mbds.newsletter.utils.ArticleItem
-import com.mbds.newsletter.utils.ArticleService
+import com.mbds.newsletter.model.ArticleItem
+import com.mbds.newsletter.services.ArticleService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

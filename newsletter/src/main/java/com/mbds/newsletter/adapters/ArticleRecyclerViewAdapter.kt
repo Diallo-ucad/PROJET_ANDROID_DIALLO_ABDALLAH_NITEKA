@@ -9,12 +9,8 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
 
-import com.mbds.newsletter.utils.ArticleItem
+import com.mbds.newsletter.model.ArticleItem
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class ArticleRecyclerViewAdapter(
         private val values: List<ArticleItem>
 )

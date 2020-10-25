@@ -25,6 +25,7 @@ class CategoriesFragment(private val cellClickListener: CellClickListener) : Fra
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity?.title = "Catégories"
         return inflater.inflate(R.layout.fragment_categories, container, false)
     }
 

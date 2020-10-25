@@ -32,6 +32,8 @@ class ArticlesFragment(private val category: String) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        activity?.title = "Catégories - $category"
+
         val view = inflater.inflate(R.layout.fragment_articles, container, false)
 
         // Set the adapter
@@ -42,10 +44,8 @@ class ArticlesFragment(private val category: String) : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
                 GlobalScope.launch(Dispatchers.Main) {
-                    println("category $category")
                     adapter = ArticleRecyclerViewAdapter(Contents.articleList(category))
                     layoutManager = GridLayoutManager(view.context, 1)
-                    println("FIN de la partie")
                 }
 
             }

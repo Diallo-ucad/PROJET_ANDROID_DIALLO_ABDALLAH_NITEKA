@@ -1,4 +1,4 @@
-package com.mbds.newsletter.utils
+package com.mbds.newsletter.model
 
 import java.util.*
 
