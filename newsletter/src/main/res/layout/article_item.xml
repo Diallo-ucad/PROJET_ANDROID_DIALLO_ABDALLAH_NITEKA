@@ -32,19 +32,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
+            android:layout_marginBottom="10dp"
             android:paddingLeft="5dp"
             android:text="test2"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_description"
-            style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+            style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
+            android:layout_marginBottom="25dp"
             android:paddingLeft="5dp"
             android:text="test2"
             android:textAppearance="?attr/textAppearanceListItem" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/article_author"
+                style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:paddingLeft="5dp"
+                android:text="author"
+                android:textAppearance="?attr/textAppearanceListItem" />
+        </LinearLayout>
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

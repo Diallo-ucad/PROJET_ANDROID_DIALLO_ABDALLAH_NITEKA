@@ -24,13 +24,14 @@ class ArticleRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        val description: String = when(item.description != null && item.description.isNotEmpty()){
-            true -> item.description.slice(IntRange(0,Math.min(70, item.description.length - 1))) + item.publishedAt
+        val description: String = when(item.content != null && item.description.isNotEmpty()){
+            true -> item.content
             else -> "Aucune description"
         }
 
         holder.contentView.text = item.title
         holder.descriptionView.text = item.description
+        holder.authorView.text = item.author
         Glide
             .with(holder.view)
             .load(item.urlToImage)
@@ -45,6 +46,7 @@ class ArticleRecyclerViewAdapter(
         val contentView: TextView = view.findViewById(R.id.article_title)
         val imgView: ImageView = view.findViewById(R.id.article_img)
         val descriptionView: TextView = view.findViewById(R.id.article_description)
+        val authorView: TextView = view.findViewById(R.id.article_author)
 
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"
