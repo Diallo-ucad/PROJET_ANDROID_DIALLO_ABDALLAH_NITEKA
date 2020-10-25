@@ -21,8 +21,8 @@ object Contents {
     private const val apiKey: String = "e547106de0e74054bf6ab4f63a9a2e59"
     private const val country: String = "fr"
 
-    suspend fun articleList(category: String): List<ArticleItem> {
-        val response = service.list(category = category, apiKey = apiKey, country = country)
+    suspend fun articleList(category: Category): List<ArticleItem> {
+        val response = service.list(category = category.name, apiKey = apiKey, country = country)
         return  response.body()?.articles ?:emptyList()
     }
     fun categoryList(): List<Category> = CategoriesData.dataList.map {

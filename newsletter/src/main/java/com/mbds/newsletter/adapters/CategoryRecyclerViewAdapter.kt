@@ -10,18 +10,17 @@ import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
 import com.mbds.newsletter.model.Category
 import com.mbds.newsletter.utils.CellClickListener
-import java.util.*
 
 class CategoryRecyclerViewAdapter(private val dataset: List<Category>, private val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
-        lateinit var articleName: String
+        lateinit var category: Category
         fun bind(item: Category) {
             val txtName = root.findViewById<TextView>(R.id.category_name)
             val imageView = root.findViewById<ImageView>(R.id.category_image)
             txtName.text = item.label
-            articleName = item.name
+            category = item
 
             Glide
                 .with(root)
@@ -45,7 +44,7 @@ class CategoryRecyclerViewAdapter(private val dataset: List<Category>, private v
             dataset[position]
         )
         holder.itemView.setOnClickListener{
-            cellClickListener.onCellClickListener(holder.articleName)
+            cellClickListener.onCellClickListener(holder.category)
         }
     }
 
