@@ -6,19 +6,25 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     android:padding="5dp"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="5dp"
+    app:strokeWidth="0.5dp"
+    app:strokeColor="@android:color/darker_gray"
+    app:shapeAppearance="@color/black"
+    app:cardElevation="0dp">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="2dp"
+       >
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/article_img"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/ic_launcher_background"
+            android:layout_marginBottom="5dp"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_title"

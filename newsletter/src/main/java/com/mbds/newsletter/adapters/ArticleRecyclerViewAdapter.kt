@@ -16,13 +16,13 @@ import com.mbds.newsletter.utils.ArticleItem
  * TODO: Replace the implementation with code for your data type.
  */
 class ArticleRecyclerViewAdapter(
-        private val values: List<ArticleItem>
+    private val values: List<ArticleItem>
 )
     : RecyclerView.Adapter<ArticleRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.article_item, parent, false)
+            .inflate(R.layout.article_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -36,11 +36,11 @@ class ArticleRecyclerViewAdapter(
         holder.contentView.text = item.title
         holder.descriptionView.text = item.description
         Glide
-                .with(holder.view)
-                .load(item.urlToImage)
-                .fitCenter()
-                .placeholder(R.drawable.placeholder)
-                .into(holder.imgView);
+            .with(holder.view)
+            .load(item.urlToImage)
+            .fitCenter()
+            .placeholder(R.drawable.placeholder)
+            .into(holder.imgView);
     }
 
     override fun getItemCount(): Int = values.size
