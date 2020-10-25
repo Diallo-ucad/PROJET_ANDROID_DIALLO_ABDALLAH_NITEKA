@@ -33,7 +33,7 @@ class CategoriAdapter(private val dataset: List<Category>, private val cellClick
 
         val rootView =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_item, parent, false)
+                .inflate(R.layout.category_item, parent, false)
         return ViewHolder(rootView)
     }
 

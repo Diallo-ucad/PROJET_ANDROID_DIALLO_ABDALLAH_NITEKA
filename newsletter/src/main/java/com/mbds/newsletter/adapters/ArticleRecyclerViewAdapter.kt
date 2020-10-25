@@ -4,7 +4,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
 
 import com.mbds.newsletter.utils.ArticleItem
@@ -20,21 +22,31 @@ class ArticleRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.fragment_item, parent, false)
+                .inflate(R.layout.article_item, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.title
-        holder.contentView.text = item.author
+        val description: String = when(item.description != null && item.description.isNotEmpty()){
+            true -> item.description.slice(IntRange(0,Math.min(70, item.description.length - 1))) + " ..."
+            else -> "Aucune description"
+        }
+
+        holder.contentView.text = description
+        Glide
+                .with(holder.view)
+                .load(item.urlToImage)
+                .fitCenter()
+                .placeholder(R.drawable.placeholder)
+                .into(holder.imgView);
     }
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val idView: TextView = view.findViewById(R.id.item_number)
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val contentView: TextView = view.findViewById(R.id.content)
+        val imgView: ImageView = view.findViewById(R.id.article_img)
 
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"

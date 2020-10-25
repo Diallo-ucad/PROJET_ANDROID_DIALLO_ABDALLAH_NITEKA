@@ -1,3 +1,3 @@
 include ':newsletter'
-//include ':calculatrice'
+include ':calculatrice'
 rootProject.name = "Projet_Android_Diallo_Abdallah_Niteka"
