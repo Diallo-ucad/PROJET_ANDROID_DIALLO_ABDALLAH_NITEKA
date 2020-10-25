@@ -25,7 +25,10 @@ object Contents {
         val response = service.list(category = category, apiKey = apiKey, country = country)
         return  response.body()?.articles ?:emptyList()
     }
-    fun categoryList(): List<Category> = CategoriesData.dataList
+    fun categoryList(): List<Category> = CategoriesData.dataList.map {
+        it.label = it.label.capitalize()
+        return@map it
+    }
     init {
         // Loggin
         val logging = HttpLoggingInterceptor()
