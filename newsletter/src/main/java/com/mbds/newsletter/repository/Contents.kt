@@ -23,7 +23,11 @@ object Contents {
 
     suspend fun articleList(category: Category): List<ArticleItem> {
         val response = service.list(category = category.name, apiKey = apiKey, country = country)
-        return  response.body()?.articles ?:emptyList()
+        val articles: List<ArticleItem>? = response.body()?.articles
+            ?.filter {
+                !it.urlToImage.isNullOrBlank()
+            }
+        return  articles ?:emptyList()
     }
     fun categoryList(): List<Category> = CategoriesData.dataList.map {
         it.label = it.label.capitalize()
