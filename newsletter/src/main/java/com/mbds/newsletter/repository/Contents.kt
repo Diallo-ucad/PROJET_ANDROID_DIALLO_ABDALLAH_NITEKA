@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Contents {
     private val service: ArticleService
     private const val baseUrl: String = "http://newsapi.org/v2/"
-    private const val apiKey: String = "e547106de0e74054bf6ab4f63a9a2e59"
+    private const val apiKey: String = "1103f0429e98441f906d0866a01ce7cd"//"e547106de0e74054bf6ab4f63a9a2e59"
     private const val country: String = "fr"
     var isFetched = false
 

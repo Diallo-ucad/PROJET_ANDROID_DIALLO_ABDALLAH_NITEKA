@@ -1,5 +1,6 @@
 package com.mbds.newsletter.adapters
 
+import android.text.format.DateUtils
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
 
 import com.mbds.newsletter.model.ArticleItem
+import java.util.*
 
 class ArticleRecyclerViewAdapter(
     private val values: List<ArticleItem>
@@ -29,9 +31,16 @@ class ArticleRecyclerViewAdapter(
             else -> "Aucune description"
         }
 
-        holder.contentView.text = item.title
+        val titleAuthor = item.title.split("-")
+        holder.contentView.text = titleAuthor[0]
         holder.descriptionView.text = item.description
-        holder.authorView.text = item.author
+        holder.authorView.text = titleAuthor[1]
+        holder.dateView.text = DateUtils.getRelativeTimeSpanString(
+                item.publishedAt.time,
+            Date().time,
+            DateUtils.MINUTE_IN_MILLIS,
+            DateUtils.FORMAT_ABBREV_RELATIVE
+        )
         Glide
             .with(holder.view)
             .load(item.urlToImage)
@@ -47,6 +56,7 @@ class ArticleRecyclerViewAdapter(
         val imgView: ImageView = view.findViewById(R.id.article_img)
         val descriptionView: TextView = view.findViewById(R.id.article_description)
         val authorView: TextView = view.findViewById(R.id.article_author)
+        val dateView: TextView = view.findViewById(R.id.article_date)
 
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"
