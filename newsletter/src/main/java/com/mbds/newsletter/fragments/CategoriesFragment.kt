@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleRecyclerViewAdapter
 import com.mbds.newsletter.adapters.CategoryRecyclerViewAdapter
+import com.mbds.newsletter.changeFragment
 import com.mbds.newsletter.model.Category
 import com.mbds.newsletter.repository.Contents
 import com.mbds.newsletter.utils.CellClickListener
@@ -30,9 +32,6 @@ class CategoriesFragment(private val cellClickListener: CellClickListener) : Fra
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        GlobalScope.launch(Dispatchers.Main) {
-            Contents.fetchAllArticles()
-        }
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
         val articles = Contents.categoryList()

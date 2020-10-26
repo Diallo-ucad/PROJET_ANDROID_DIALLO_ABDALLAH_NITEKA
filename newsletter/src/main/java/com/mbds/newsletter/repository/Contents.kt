@@ -20,6 +20,7 @@ object Contents {
     private const val baseUrl: String = "http://newsapi.org/v2/"
     private const val apiKey: String = "e547106de0e74054bf6ab4f63a9a2e59"
     private const val country: String = "fr"
+    var isFetched = false
 
     val categoryArticles = mutableMapOf<String, List<ArticleItem>>()
 
@@ -37,6 +38,7 @@ object Contents {
             val listArticles = articleList(it)
             categoryArticles.put(catName, listArticles)
         }
+        isFetched = true
     }
     fun categoryList(): List<Category> = CategoriesData.dataList
     init {

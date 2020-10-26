@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
 import com.mbds.newsletter.model.Category
+import com.mbds.newsletter.repository.Contents
 import com.mbds.newsletter.utils.CellClickListener
 
 class CategoryRecyclerViewAdapter(private val dataset: List<Category>, private val cellClickListener: CellClickListener) :
@@ -17,10 +18,19 @@ class CategoryRecyclerViewAdapter(private val dataset: List<Category>, private v
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
         lateinit var category: Category
         fun bind(item: Category) {
+            category = item
+            val nb_articles = Contents.categoryArticles[category.name]?.size
+            val subTileStr = "$nb_articles articles"
             val txtName = root.findViewById<TextView>(R.id.category_name)
             val imageView = root.findViewById<ImageView>(R.id.category_image)
+            val subTitle = root.findViewById<TextView>(R.id.category_subtitle)
             txtName.text = item.label.capitalize()
-            category = item
+            subTitle.text = when(nb_articles == null){
+                true -> "fetching ..."
+                else -> subTileStr
+            }
+
+
 
             Glide
                 .with(root)
