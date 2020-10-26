@@ -45,7 +45,11 @@ class ArticlesFragment(private val category: Category) : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
                 GlobalScope.launch(Dispatchers.Main) {
-                    adapter = ArticleRecyclerViewAdapter(Contents.articleList(category))
+                    adapter = Contents.categoryArticles[category.name]?.let {
+                        ArticleRecyclerViewAdapter(
+                            it
+                        )
+                    }
                     layoutManager = GridLayoutManager(view.context, 1)
                 }
 

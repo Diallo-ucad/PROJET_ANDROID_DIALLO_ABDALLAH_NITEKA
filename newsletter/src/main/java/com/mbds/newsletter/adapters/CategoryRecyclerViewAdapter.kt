@@ -19,7 +19,7 @@ class CategoryRecyclerViewAdapter(private val dataset: List<Category>, private v
         fun bind(item: Category) {
             val txtName = root.findViewById<TextView>(R.id.category_name)
             val imageView = root.findViewById<ImageView>(R.id.category_image)
-            txtName.text = item.label
+            txtName.text = item.label.capitalize()
             category = item
 
             Glide
