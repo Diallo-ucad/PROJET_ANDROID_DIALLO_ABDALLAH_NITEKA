@@ -26,15 +26,18 @@ class ArticleRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        val description: String = when(item.content != null && item.description.isNotEmpty()){
-            true -> item.content
-            else -> "Aucune description"
+        val description: String = when(item.description != null){
+            true -> item.description
+            else -> ""
         }
 
         val titleAuthor = item.title.split("-")
         holder.contentView.text = titleAuthor[0]
-        holder.descriptionView.text = item.description
-        holder.authorView.text = titleAuthor[1]
+        holder.descriptionView.text = description
+        holder.authorView.text = when(titleAuthor[1].length <= 25){
+            true -> titleAuthor[1]
+            else -> item.author
+        }
         holder.dateView.text = DateUtils.getRelativeTimeSpanString(
                 item.publishedAt.time,
             Date().time,
